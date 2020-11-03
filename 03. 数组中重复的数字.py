@@ -5,7 +5,7 @@
 数组中某些数字是重复的，但不知道有几个数字重复了，也不知道每个数
 字重复了几次。请找出数组中任意一个重复的数字。
 
-来源：力扣（LeetCode）
+来源：力扣
 链接：https://leetcode-cn.com/problems/shu-zu-zhong-zhong-fu-de-shu-zi-lcof
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 

@@ -39,3 +39,5 @@ def exist(board: List[List[str]], word: str) -> bool:
             if dfs(i, j, 0):
                 return True
     return False
+
+# 知识点：回溯法，多半是递归实现，并且回溯的时候需要还原状态

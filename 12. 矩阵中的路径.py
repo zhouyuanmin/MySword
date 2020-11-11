@@ -16,3 +16,24 @@
 1 <= board.length <= 200
 1 <= board[i].length <= 200
 """
+
+# 解法思路:回溯法
+from typing import List
+
+
+def exist(board: List[List[str]], word: str) -> bool:
+    def dfs(_i, _j, k):
+        if not 0 <= _i < len(board) or not 0 <= _j < len(board[0]) or board[_i][_j] != word[k]:
+            return False
+        if k == len(word) - 1:
+            return True
+        tmp, board[_i][_j] = board[_i][_j], '/'
+        res = dfs(_i + 1, _j, k + 1) or dfs(_i - 1, _j, k + 1) or dfs(_i, _j + 1, k + 1) or dfs(_i, _j - 1, k + 1)
+        board[_i][_j] = tmp
+        return res
+
+    for i in range(len(board)):
+        for j in range(len(board[0])):
+            if dfs(i, j, 0):
+                return True
+    return False

@@ -22,14 +22,16 @@ from typing import List
 
 
 def exist(board: List[List[str]], word: str) -> bool:
-    def dfs(_i, _j, k):
-        if not 0 <= _i < len(board) or not 0 <= _j < len(board[0]) or board[_i][_j] != word[k]:
+    def dfs(_i, _j, _k):
+        if not 0 <= _i < len(board) or not 0 <= _j < len(board[0]) or board[_i][_j] != word[_k]:
             return False
-        if k == len(word) - 1:
+
+        if _k == len(word) - 1:
             return True
-        tmp, board[_i][_j] = board[_i][_j], '/'
-        res = dfs(_i + 1, _j, k + 1) or dfs(_i - 1, _j, k + 1) or dfs(_i, _j + 1, k + 1) or dfs(_i, _j - 1, k + 1)
-        board[_i][_j] = tmp
+
+        tmp, board[_i][_j] = board[_i][_j], '/'  # 标明已占领
+        res = dfs(_i + 1, _j, _k + 1) or dfs(_i - 1, _j, _k + 1) or dfs(_i, _j + 1, _k + 1) or dfs(_i, _j - 1, _k + 1)
+        board[_i][_j] = tmp  # 还原标明
         return res
 
     for i in range(len(board)):

@@ -23,3 +23,39 @@
 链接：https://leetcode-cn.com/problems/ji-qi-ren-de-yun-dong-fan-wei-lcof
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 """
+
+from typing import Set, Tuple
+
+
+def moving_count(self, m: int, n: int, k: int) -> int:
+    points: Set = set()
+
+    def count_point(point: Tuple[int, int]):
+        count = 0
+        i, j = point
+        while i:
+            count += i % 10
+            i = i // 10
+        while j:
+            count += j % 10
+            j = j // 10
+        if count <= k:
+            return True
+        else:
+            return False
+
+    def get_points(point: Tuple[int, int]) -> None:
+        i, j = point
+        if not (0 <= i < m and 0 <= j < n):
+            return None
+        if count_point(point):
+            if point in points:
+                return None
+            points.add(point)
+            get_points(point=(i + 1, j))
+            get_points(point=(i, j + 1))
+        return None
+
+    get_points(point=(0, 0))
+
+    return len(points)

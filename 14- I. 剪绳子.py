@@ -25,3 +25,19 @@
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 """
 
+
+def cutting_rope(self, n: int) -> int:
+    if n < 3:
+        return 1
+    elif n == 3:
+        return 2
+    # 长度为3的绳子
+    length3 = n // 3
+    # 剩余的绳子
+    remainder = n - length3 * 3
+    if remainder == 2:
+        return 3 ** length3 * 2
+    elif remainder == 1:
+        return 3 ** (length3 - 1) * 4
+    else:
+        return 3 ** length3

@@ -22,3 +22,20 @@ n 是 32 位有符号整数，其数值范围是[−231, 231 − 1] 。
 链接：https://leetcode-cn.com/problems/shu-zhi-de-zheng-shu-ci-fang-lcof
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 """
+
+
+def my_pow(self, x: float, n: int) -> float:
+    # 边界处理
+    if x == 0:
+        return 0
+    # 归一化
+    if n < 0:
+        x, n = 1 / x, -n
+
+    res = 1
+    while n:
+        if n & 1:
+            res *= x
+        x *= x
+        n >>= 1
+    return res

@@ -30,3 +30,10 @@ def exchange(self, nums: List[int]) -> List[int]:
         elif nums[j] % 2 == 0:
             j = j - 1
     return nums
+
+
+# 方法2
+def exchange2(self, nums: List[int]) -> List[int]:
+    simples = [x for x in nums if x % 2 == 1]
+    doubles = [x for x in nums if x % 2 == 0]
+    return simples + doubles

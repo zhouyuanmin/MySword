@@ -34,6 +34,7 @@ def is_number(self, s: str) -> bool:
             t = c  # dot, blank
         else:
             t = '?'  # unknown
-        if t not in states[p]: return False
+        if t not in states[p]:
+            return False
         p = states[p][t]
     return p in (2, 3, 7, 8)
